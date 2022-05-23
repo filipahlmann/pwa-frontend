@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>All Todos</h1>
-    <button @click="newTodo()">New Todo - static</button>
+    <button @click="newTodo()">New Todo</button>
     <br>
     <input type="text" placeholder="Author" v-model="state.newAuthor">
     <span> Test: {{ state.newAuthor }} </span>

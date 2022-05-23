@@ -16,7 +16,7 @@
     
   <!-- SwaggerRegister button -->
 
-  <button @click="swaggerRegister()">Swagger Login</button>
+  <button @click="swaggerRegister()">Register</button>
   </div>
 </template>
 

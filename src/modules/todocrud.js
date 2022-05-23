@@ -13,7 +13,10 @@ const getTodos = () => {
     newAuthor: '',
     newTodoItem: '',
     todos: {},
-    token: null // for swaggerLogin
+    token: null, // for swaggerLogin
+    name: '',
+    email: '',
+    password: '',
   })
 
   // swaggerLogin
@@ -23,6 +26,7 @@ const getTodos = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "auth-token": "state.token",
         }, 
         body: JSON.stringify({
           email: state.value.email,
@@ -51,7 +55,7 @@ const getTodos = () => {
         // "auth-token": state.token
       },
       body: JSON.stringify({
-        name: state.value.name,
+        name: state.value.name, 
         email: state.value.email,
         password: state.value.password
       }) 
@@ -59,9 +63,11 @@ const getTodos = () => {
       fetch("http://localhost:3000/user/register", 
       requestOptions
     )
+    
   }
 
   const GetAllTodos = async () => {
+
     try {
        await fetch("http://localhost:3000/todos")
       .then(res => res.json())
