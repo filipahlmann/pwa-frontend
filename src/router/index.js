@@ -5,10 +5,14 @@ import Register from '../views/RegisterView.vue'
 import Login from '../views/LoginView.vue'
 
 const routes = [
+
+  
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    
+
   },
   {
     path: '/register',
@@ -32,7 +36,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/TodosView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/TodosView.vue'),
   },
   {
     path: '/todo/:id',
@@ -52,6 +56,15 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   }
 ]
+
+router.beforeEach((to, from, next) => {
+  const currentUser = data;
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  
+  if (requiresAuth && !currentUser) next('login');
+  else next();
+  }
+)
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

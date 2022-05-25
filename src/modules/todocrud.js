@@ -85,8 +85,8 @@ const getTodos = () => {
     const requestOptions = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
-        // "auth-token": state.token
+        "Content-Type": "application/json",
+        "auth-token": "state.token"
       },
       body: JSON.stringify({
         author: state.value.newAuthor,
